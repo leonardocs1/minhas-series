@@ -12,6 +12,7 @@ mongoose.Promise = global.Promise
 app.use(bodyParser.urlencoded({extended: true}))
 
 const pages = require('./routes/pages')
+const series = require('./routes/series')
 
 // assets
 app.use(express.static('public'))
@@ -21,6 +22,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 app.use('/', pages)
+app.use('/series', series)
 
 mongoose
 .connect(mongo)
