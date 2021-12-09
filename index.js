@@ -11,6 +11,8 @@ mongoose.Promise = global.Promise
 // process request body
 app.use(bodyParser.urlencoded({extended: true}))
 
+const pages = require('./routes/pages')
+
 // assets
 app.use(express.static('public'))
 
@@ -18,7 +20,7 @@ app.use(express.static('public'))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-app.get('/', (req, res) => res.send('ok'))
+app.use('/', pages)
 
 mongoose
 .connect(mongo)
